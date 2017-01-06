@@ -31,5 +31,10 @@ public class StatsManager : MonoBehaviour {
 	public static void ActualizeStats (Stats stats) {
 		myStats = stats;
 		rect.GetChild(0).GetComponent<Text> ().text = stats.name;
+		rect.GetChild (1).GetChild (1).GetComponent<Text> ().text = stats.stats [0] + " %";
+		rect.GetChild (2).GetChild (1).GetComponent<Text> ().text = stats.stats [1] + " %";
+		rect.GetChild (3).GetChild (1).GetComponent<Text> ().text = stats.stats [2] + " %";
+		rect.GetChild (4).GetChild (1).GetComponent<Text> ().text = stats.stats [3] + " %";
+		rect.GetChild (5).GetChild (1).GetComponent<Text> ().text = stats.stats [4] + " %";
 	}
 }
