@@ -3,9 +3,11 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler ,IEndDragHandler, IPointerEnterHandler {
+	
 	public static GameObject itemBeingDragged;
 	Vector3 startPosition;
 	Transform startParent;
+
 	#region IBeginDragHandler implementation
 	public void OnBeginDrag (PointerEventData eventData)
 	{

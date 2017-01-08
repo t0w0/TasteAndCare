@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class StepsManager : MonoBehaviour {
 
+	public RecipeManager recipeManager;
+
 	public bool welcome = false;
 	public bool protein = false;
 	public bool garnish = false;
@@ -19,6 +21,14 @@ public class StepsManager : MonoBehaviour {
 		
 		protein = true;
 		GetComponent<Animator> ().SetBool ("protein", protein);
+	}
+
+	public void GoToGarnishStep () {
+	
+		garnish = true;
+		GetComponent<Animator> ().SetBool ("garnish", garnish);
+		recipeManager.ActualizeIngredients ();
+
 	}
 
 }
