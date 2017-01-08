@@ -7,13 +7,12 @@ public class PlateManager : MonoBehaviour,  IDropHandler {
 
 	public RecipeManager recipeManager;
 	public StepsManager stepsManager;
-	public Transform[] slots; 
+	public List<Transform> slots = new List<Transform>(); 
 
 	public void Start () {
-		slots = new Transform[transform.childCount];
 		recipeManager.InitIngredients ();
-		for (int i = 0 ; i < slots.Length ; i++) {
-			slots[i] = transform.GetChild(i);
+		for (int i = 0 ; i < transform.childCount ; i++) {
+			slots.Add (transform.GetChild(i));
 		}
 
 	}
@@ -21,14 +20,12 @@ public class PlateManager : MonoBehaviour,  IDropHandler {
 	#region IDropHandler implementation
 	public void OnDrop (PointerEventData eventData)
 	{
-		for (int i = 0; i < slots.Length; i++) {
-			if (i == 0) {
-				//stepsManager.GoToGarnishStep ();
-			}
+		for (int i = 0; i < slots.Count; i++) {
 			if (!slots[i].GetComponent<Slot>().item) {
 				DragHandler.itemBeingDragged.transform.SetParent (slots[i]);
 				DragHandler.itemBeingDragged.transform.rotation = slots[i].rotation;
 				recipeManager.ActualizePlate ();
+				recipeManager.ActualizeIngredients ();
 				return;
 			}
 		}

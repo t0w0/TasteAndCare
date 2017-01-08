@@ -7,6 +7,7 @@ public class AgentGenerator : MonoBehaviour {
 
 	public int numberOfAgent = 50;
 	public GameObject agent;
+	public List <Transform> agents = new List<Transform> ();  
 	public Color[] colors;
 
 	// Use this for initialization
@@ -16,7 +17,9 @@ public class AgentGenerator : MonoBehaviour {
 		
 			GameObject agentGenerated = Instantiate (agent) as GameObject;
 			agentGenerated.transform.parent = transform;
-			agentGenerated.GetComponent<Image> ().color = colors [Random.Range (0, colors.Length)];		}
+			agentGenerated.GetComponent<Image> ().color = colors [Random.Range (0, colors.Length)];	
+			agents.Add (agentGenerated.transform);
+		}
 			
 	}
 	

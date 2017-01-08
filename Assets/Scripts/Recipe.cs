@@ -8,4 +8,8 @@ public class Recipe : MonoBehaviour {
 	public string description;
 	public GameObject[] ingredients;
 
+	public void Start () {
+		name = gameObject.name;
+	}
+
 }

@@ -13,5 +13,4 @@ public class Stats : MonoBehaviour {
 		0,
 		0
 	};
-
 }
