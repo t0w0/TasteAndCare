@@ -6,7 +6,8 @@ public class Recipe : MonoBehaviour {
 
 	public string name;
 	public string description;
-	public GameObject[] ingredients;
+	public List<GameObject> ingredients;
+	public Sprite picto;
 
 	public void Start () {
 		name = gameObject.name;

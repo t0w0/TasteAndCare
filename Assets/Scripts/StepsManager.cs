@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StepsManager : MonoBehaviour {
 
@@ -8,7 +9,6 @@ public class StepsManager : MonoBehaviour {
 
 	public bool welcome = false;
 	public bool protein = false;
-	public bool garnish = false;
 	public bool quantity = false;
 	public bool wait = false;
 
@@ -23,12 +23,27 @@ public class StepsManager : MonoBehaviour {
 		GetComponent<Animator> ().SetBool ("protein", protein);
 	}
 
-	public void GoToGarnishStep () {
-	
-		garnish = true;
-		GetComponent<Animator> ().SetBool ("garnish", garnish);
-		recipeManager.ActualizeIngredients ();
+	public void Quantity () {
+
+		quantity = true;
+		GetComponent<Animator> ().SetBool ("quantity", quantity);
 
 	}
+
+	public void Wait () {
+
+		wait = true;
+		GetComponent<Animator> ().SetBool ("wait", wait);
+
+	}
+
+	public void Update () {
+
+		if (Input.GetKeyDown (KeyCode.Space)) {
+			SceneManager.LoadScene ("MainScene");
+		}
+
+	}
+
 
 }

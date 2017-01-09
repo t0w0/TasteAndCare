@@ -8,6 +8,7 @@ public class StatsManager : MonoBehaviour {
 	public static RectTransform rect;
 	public static Vector2[] goalVector;
 	public static Stats myStats;
+	public static Stats initialStats;
 
 	// Use this for initialization
 	void Start () {
@@ -27,6 +28,9 @@ public class StatsManager : MonoBehaviour {
 			i++;
 		}
 	}
+	public static void InitRecipe (Stats stat) {
+		initialStats = stat;
+	}
 
 	public static void ActualizeStats (Stats stats) {
 		myStats = stats;
@@ -36,5 +40,26 @@ public class StatsManager : MonoBehaviour {
 		rect.GetChild (3).GetChild (1).GetComponent<Text> ().text = stats.stats [2] + " %";
 		rect.GetChild (4).GetChild (1).GetComponent<Text> ().text = stats.stats [3] + " %";
 		rect.GetChild (5).GetChild (1).GetComponent<Text> ().text = stats.stats [4] + " %";
+	}
+
+	public static void AddQuantity (Stats st, float quant) {
+		for (int i = 0 ; i < myStats.stats.Length ; i ++ ) {
+
+			myStats.stats [i] = initialStats.stats[i] + 5;
+			if (myStats.stats [i] < 0)
+				myStats.stats[i] = 0f;
+		
+		}
+		ActualizeStats (myStats);
+	}
+	public static void LessQuantity (Stats st, float quant) {
+		for (int i = 0 ; i < myStats.stats.Length ; i ++ ) {
+
+			myStats.stats [i] =   initialStats.stats[i] - 5;
+			if (myStats.stats [i] < 0)
+				myStats.stats[i] = 0f;
+
+		}
+		ActualizeStats (myStats);
 	}
 }
